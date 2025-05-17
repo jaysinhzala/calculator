@@ -70,10 +70,22 @@ button{
     font-style: bold;
 }
 
+button:active{
+    background-color: rgb(117, 114, 114);
+    font-size: 18px;
+}
+
 .clear-button,
 .delete-button,
 .percentage-button{
     background-color: rgb(97, 95, 95);
+}
+
+.clear-button:active,
+.delete-button:active,
+.percentage-button:active{
+    background-color: rgb(154, 152, 152);
+    font-size: 18px;
 }
 
 .division-button,
@@ -85,8 +97,21 @@ button{
     font-size: 45px;
 }
 
+.division-button:active,
+.multiplication-button:active,
+.subtraction-button:active,
+.plus-button:active{
+    background-color: rgb(235, 231, 231);
+    font-size: 30px;
+}  
+
 .equal-button{
     background-color: rgb(1, 179, 1);
     font-size: 40px;
+}
+
+.equal-button:active{
+    background-color: rgb(121, 203, 121);
+    font-size: 30px;
 }
 
