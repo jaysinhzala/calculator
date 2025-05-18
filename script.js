@@ -35,6 +35,16 @@ function chooseOperation(opSymbol){
     updateDisplay();
 }
 
+function addDoubleZero(){
+    currentNumber = currentNumber +  '00';
+    updateDisplay();
+}
+
+function deleteLast(){
+    currentNumber = currentNumber.slice(0,-1);
+    updateDisplay();
+}
+
 function compute(){
     if( currentNumber==='' || previousNumber === '') return;
 
@@ -58,7 +68,10 @@ function updateDisplay(){
 }
 
 function clearDisplay(){
-    inputElement.value = '0';
+    currentNumber = '';
+    previousNumber = '';
+    operation = null;
+    updateDisplay();
 }
 
 percentageBtn.addEventListener('click',() => {chooseOperation('%')});
@@ -68,3 +81,6 @@ addBtn.addEventListener('click',() => {chooseOperation('+')});
 subBtn.addEventListener('click',() => {chooseOperation('-')});
 equalBtn.addEventListener('click',compute);
 clrBtn.addEventListener('click',clearDisplay);
+doubleZeroBtn.addEventListener('click',addDoubleZero);
+deleteBtn.addEventListener('click',deleteLast);
+percentageBtn.addEventListener('click',computePercent);
