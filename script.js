@@ -22,14 +22,27 @@ let operation = null;
 
 
 function appendNumber(number){
-    previousNumber = previousNumber + number;
-    inputElement.value = previousNumber;
-    console.log(previousNumber);
+    currentNumber = currentNumber + number.toString();
+    updateDisplay();
 }
 
 function chooseOperation(opSymbol){
+    if(currentNumber === '') return;
+
     operation = opSymbol;
-    console.log(operation);   
+    previousNumber = currentNumber;
+    currentNumber = '';
+    console.log(previousNumber);
+    console.log(currentNumber);
+    updateDisplay();
 }
 
+function updateDisplay(){
+    inputElement.value = currentNumber || '0';
+}
+
+percentageBtn.addEventListener('click',() => {chooseOperation('%')});
 divBtn.addEventListener('click',() => {chooseOperation('/')});
+mulBtn.addEventListener('click',() => {chooseOperation('*')});
+addBtn.addEventListener('click',() => {chooseOperation('+')});
+subBtn.addEventListener('click',() => {chooseOperation('-')});
