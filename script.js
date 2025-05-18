@@ -32,8 +32,24 @@ function chooseOperation(opSymbol){
     operation = opSymbol;
     previousNumber = currentNumber;
     currentNumber = '';
-    console.log(previousNumber);
-    console.log(currentNumber);
+    updateDisplay();
+}
+
+function compute(){
+    if( currentNumber==='' || previousNumber === '') return;
+
+    currNo = parseFloat(currentNumber);
+    prevNo = parseFloat(previousNumber);
+    
+    switch(operation){
+        case '+' : currentNumber = (prevNo + currNo).toString(); break;
+        case '-' : currentNumber = (prevNo - currNo).toString(); break;
+        case '*' : currentNumber = (prevNo * currNo).toString(); break;
+        case '/' : currentNumber = (prevNo / currNo).toString(); break;
+    }
+
+    operation = '';
+    previousNumber = '';
     updateDisplay();
 }
 
@@ -41,8 +57,14 @@ function updateDisplay(){
     inputElement.value = currentNumber || '0';
 }
 
+function clearDisplay(){
+    inputElement.value = '0';
+}
+
 percentageBtn.addEventListener('click',() => {chooseOperation('%')});
 divBtn.addEventListener('click',() => {chooseOperation('/')});
 mulBtn.addEventListener('click',() => {chooseOperation('*')});
 addBtn.addEventListener('click',() => {chooseOperation('+')});
 subBtn.addEventListener('click',() => {chooseOperation('-')});
+equalBtn.addEventListener('click',compute);
+clrBtn.addEventListener('click',clearDisplay);
