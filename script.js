@@ -21,66 +21,86 @@ let currentNumber = '';
 let operation = null;
 
 
-function appendNumber(number){
+function appendNumber(number) {
+    if (number === 0 && currentNumber === '0') return;
     currentNumber = currentNumber + number.toString();
     updateDisplay();
 }
 
-function chooseOperation(opSymbol){
-    if(currentNumber === '') return;
-
+function chooseOperation(opSymbol) {
+    if (currentNumber === '' && previousNumber === '') return;
+    if (currentNumber === '' && previousNumber !== '') {
+        operation = opSymbol; // change pending operation
+        updateDisplay();
+        return;
+    }
+    if (previousNumber !== '') compute();
     operation = opSymbol;
     previousNumber = currentNumber;
     currentNumber = '';
+}
+
+function addDoubleZero() {
+    currentNumber = currentNumber + '00';
     updateDisplay();
 }
 
-function addDoubleZero(){
-    currentNumber = currentNumber +  '00';
+function deleteLast() {
+    currentNumber = currentNumber.slice(0, -1);
     updateDisplay();
 }
 
-function deleteLast(){
-    currentNumber = currentNumber.slice(0,-1);
+function appendPoint() {
+    currentNumber = currentNumber + '.';
     updateDisplay();
 }
 
-function compute(){
-    if( currentNumber==='' || previousNumber === '') return;
+function computePercent() {
+    if (currentNumber === '') return;
+    currentNumber = (parseFloat(currentNumber) / 100).toString();
+    updateDisplay();
+}
+
+function compute() {
+    if (currentNumber === '' || previousNumber === '') return;
 
     currNo = parseFloat(currentNumber);
     prevNo = parseFloat(previousNumber);
-    
-    switch(operation){
-        case '+' : currentNumber = (prevNo + currNo).toString(); break;
-        case '-' : currentNumber = (prevNo - currNo).toString(); break;
-        case '*' : currentNumber = (prevNo * currNo).toString(); break;
-        case '/' : currentNumber = (prevNo / currNo).toString(); break;
+
+    switch (operation) {
+        case '+': currentNumber = (prevNo + currNo).toString(); break;
+        case '-': currentNumber = (prevNo - currNo).toString(); break;
+        case '*': currentNumber = (prevNo * currNo).toString(); break;
+        case '/': currentNumber = curr === 0 ? 'Error' : (prevNo / currNo).toString(); break;
+        default : return;
     }
 
-    operation = '';
+    operation = null;
     previousNumber = '';
     updateDisplay();
 }
 
-function updateDisplay(){
-    inputElement.value = currentNumber || '0';
+function updateDisplay() {
+    inputElement.value = currentNumber || previousNumber || '0';
 }
 
-function clearDisplay(){
+function clearDisplay() {
     currentNumber = '';
     previousNumber = '';
     operation = null;
     updateDisplay();
 }
 
-percentageBtn.addEventListener('click',() => {chooseOperation('%')});
-divBtn.addEventListener('click',() => {chooseOperation('/')});
-mulBtn.addEventListener('click',() => {chooseOperation('*')});
-addBtn.addEventListener('click',() => {chooseOperation('+')});
-subBtn.addEventListener('click',() => {chooseOperation('-')});
-equalBtn.addEventListener('click',compute);
-clrBtn.addEventListener('click',clearDisplay);
-doubleZeroBtn.addEventListener('click',addDoubleZero);
-deleteBtn.addEventListener('click',deleteLast);
-percentageBtn.addEventListener('click',computePercent);
+divBtn.addEventListener('click', () => { chooseOperation('/') });
+mulBtn.addEventListener('click', () => { chooseOperation('*') });
+addBtn.addEventListener('click', () => { chooseOperation('+') });
+subBtn.addEventListener('click', () => { chooseOperation('-') });
+equalBtn.addEventListener('click', compute);
+clrBtn.addEventListener('click', clearDisplay);
+doubleZeroBtn.addEventListener('click', addDoubleZero);
+deleteBtn.addEventListener('click', deleteLast);
+pointBtn.addEventListener('click', appendPoint);
+percentageBtn.addEventListener('click', computePercent);
+
+updateDisplay();
+window.appendNumber = appendNumber;
