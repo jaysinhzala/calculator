@@ -20,13 +20,19 @@ let previousNumber = '';
 let currentNumber = '';
 let operation = null;
 
-
+//---------------------------------------------
+//  Takes a number from clicked button & stores value in variable.
+//  Then displays it 
+//---------------------------------------------
 function appendNumber(number) {
     if (number === 0 && currentNumber === '0') return;
     currentNumber = currentNumber + number.toString();
     updateDisplay();
 }
 
+//---------------------------------------------
+//  Choose a operation and stores it in a variable 
+//---------------------------------------------
 function chooseOperation(opSymbol) {
     if (currentNumber === '' && previousNumber === '') return;
     if (currentNumber === '' && previousNumber !== '') {
@@ -40,27 +46,42 @@ function chooseOperation(opSymbol) {
     currentNumber = '';
 }
 
+//---------------------------------------------
+//  Add double zero feature 
+//---------------------------------------------
 function addDoubleZero() {
     currentNumber = currentNumber + '00';
     updateDisplay();
 }
 
+//---------------------------------------------
+//  Delete last degit feature 
+//---------------------------------------------
 function deleteLast() {
     currentNumber = currentNumber.slice(0, -1);
     updateDisplay();
 }
 
+//---------------------------------------------
+//  Adds float point to current number 
+//---------------------------------------------
 function appendPoint() {
     currentNumber = currentNumber + '.';
     updateDisplay();
 }
 
+//---------------------------------------------
+//  Logic behind compute percentage feature 
+//---------------------------------------------
 function computePercent() {
     if (currentNumber === '') return;
     currentNumber = (parseFloat(currentNumber) / 100).toString();
     updateDisplay();
 }
 
+//---------------------------------------------
+//  Main function that performes all the calculator operations '+,-,*,/' 
+//---------------------------------------------
 function compute() {
     if (currentNumber === '' || previousNumber === '') return;
 
@@ -80,6 +101,9 @@ function compute() {
     updateDisplay();
 }
 
+//---------------------------------------------
+//  This function is used to display every digit to input field 
+//---------------------------------------------
 function updateDisplay() {
     let displayValue = currentNumber || previousNumber || '0';
 
@@ -101,6 +125,9 @@ function updateDisplay() {
         : formattedInt;
 }
 
+//---------------------------------------------
+//  Clear button feature 
+//---------------------------------------------
 function clearDisplay() {
     currentNumber = '';
     previousNumber = '';
@@ -108,6 +135,9 @@ function clearDisplay() {
     updateDisplay();
 }
 
+//---------------------------------------------
+//  Used DOM variables to add event listener to call every function 
+//---------------------------------------------
 divBtn.addEventListener('click', () => { chooseOperation('/') });
 mulBtn.addEventListener('click', () => { chooseOperation('*') });
 addBtn.addEventListener('click', () => { chooseOperation('+') });
