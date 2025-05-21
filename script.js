@@ -71,7 +71,7 @@ function compute() {
         case '+': currentNumber = (prevNo + currNo).toString(); break;
         case '-': currentNumber = (prevNo - currNo).toString(); break;
         case '*': currentNumber = (prevNo * currNo).toString(); break;
-        case '/': currentNumber = curr === 0 ? 'Error' : (prevNo / currNo).toString(); break;
+        case '/': currentNumber = currNo === 0 ? 'Error' : (prevNo / currNo).toString(); break;
         default : return;
     }
 
@@ -81,7 +81,24 @@ function compute() {
 }
 
 function updateDisplay() {
-    inputElement.value = currentNumber || previousNumber || '0';
+    let displayValue = currentNumber || previousNumber || '0';
+
+    // Prevent formatting for non-numeric values like 'Error'
+    if (isNaN(displayValue)) {
+        inputElement.value = displayValue;
+        return;
+    }
+
+    // Split into integer and decimal parts
+    const [intPart, decimalPart] = displayValue.split('.');
+
+    // Format integer part with commas
+    const formattedInt = parseInt(intPart, 10).toLocaleString();
+
+    // Combine with decimal if exists
+    inputElement.value = decimalPart !== undefined
+        ? `${formattedInt}.${decimalPart}`
+        : formattedInt;
 }
 
 function clearDisplay() {
