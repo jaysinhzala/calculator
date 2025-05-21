@@ -25,6 +25,35 @@ A simple, fully functional **web-based calculator** built using HTML, CSS, and v
 
 ---
 
+## 🔧 How It Works
+
+1. Buttons are wired using `addEventListener()` to corresponding functions like `appendNumber()`, `compute()`, and `clearDisplay()`.
+2. Calculator stores the current number, previous number, and selected operation.
+3. The display is updated using `updateDisplay()`, which:
+   - Splits numbers into integer and decimal parts
+   - Applies commas using `.toLocaleString()`
+   - Shows `"Error"` if invalid input occurs
+
+---
+
+## 💡 Future Improvements
+
+- Add keyboard support for number and operation keys.
+- Add a dark mode toggle.
+- Show a calculation history panel.
+- Add scientific functions (square root, exponentiation, etc.).
+- Make the layout mobile responsive.
+
+---
+
+## 🧑‍💻 Author
+
+**Jaysinh Zala**  
+[GitHub Profile]((https://github.com/jaysinhzala))
+
+
+---
+
 ## 📂 File Structure
 
 ```plaintext
