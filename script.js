@@ -1,5 +1,5 @@
 //---------------------------------------------
-//  Stored DOM elements once for efficiency
+//  Stored DOM elements once for efficiency.
 //---------------------------------------------
 const inputElement = document.querySelector('.js-input');
 const clrBtn = document.querySelector('.js-clear-button');
