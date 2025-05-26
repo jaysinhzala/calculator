@@ -12,6 +12,12 @@ const addBtn = document.querySelector('.js-plus-button');
 const equalBtn = document.querySelector('.js-equal-button');
 const pointBtn = document.querySelector('.js-point-button');
 const doubleZeroBtn = document.querySelector('.js-00-button');
+const historyBtn = document.querySelector('.js-history-button');
+const historyContainer = document.querySelector('.js-history-container');
+const historyList = document.querySelector('.js-history-list');
+
+let history = [];  // Stores calculation strings
+
 
 //---------------------------------------------
 //  Created calculator variables 
@@ -87,19 +93,37 @@ function compute() {
 
     currNo = parseFloat(currentNumber);
     prevNo = parseFloat(previousNumber);
+    let result;
 
     switch (operation) {
-        case '+': currentNumber = (prevNo + currNo).toString(); break;
-        case '-': currentNumber = (prevNo - currNo).toString(); break;
-        case '*': currentNumber = (prevNo * currNo).toString(); break;
-        case '/': currentNumber = currNo === 0 ? 'Error' : (prevNo / currNo).toString(); break;
+        case '+': result = prevNo + currNo; break;
+        case '-': result = prevNo - currNo; break;
+        case '*': result = prevNo * currNo; break;
+        case '/': result = currNo === 0 ? 'Error' : prevNo / currNo; break;
         default : return;
     }
 
+    const expression = `${previousNumber} ${operation} ${currentNumber} = ${result}`;
+    if (result !== 'Error') {
+        history.push(expression);
+        updateHistory();
+    }
+
+    currentNumber = result.toString();
     operation = null;
     previousNumber = '';
     updateDisplay();
 }
+
+function updateHistory() {
+    historyList.innerHTML = '';
+    history.slice().reverse().forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        historyList.appendChild(li);
+    });
+}
+
 
 //---------------------------------------------
 //  This function is used to display every digit to input field 
@@ -148,6 +172,11 @@ doubleZeroBtn.addEventListener('click', addDoubleZero);
 deleteBtn.addEventListener('click', deleteLast);
 pointBtn.addEventListener('click', appendPoint);
 percentageBtn.addEventListener('click', computePercent);
+historyBtn.addEventListener('click', () => {
+    historyContainer.style.display = 
+        historyContainer.style.display === 'none' ? 'block' : 'none';
+});
+
 
 updateDisplay();
 window.appendNumber = appendNumber;

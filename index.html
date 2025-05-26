@@ -14,7 +14,12 @@
     <div class="elements-container">
         <input class="input js-input" placeholder="0" type="text" readonly>
         <div>
-        <button class="history-button"><img src="/1666652-200.png"></button></div>
+        <button class="history-button js-history-button"><img src="/1666652-200.png"></button>
+        </div>
+        <div class="history-container js-history-container" style="display:none;">
+            <h3>History</h3>
+            <ul class="js-history-list"></ul>
+          </div>
             <div>
                 <button class="clear-button js-clear-button">C</button>
                 <button class="delete-button js-delete-button material-icons">
@@ -55,7 +60,7 @@
             </div>
         </div>
     </div>
-    <script src="/calculator/script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
