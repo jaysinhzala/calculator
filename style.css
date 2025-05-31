@@ -16,7 +16,7 @@ body{
 
 .elements-container{
     width: 400px;
-    height: auto;
+    height: 780px;
     border-width: 3px;
     border-style: solid;
     border-radius: 15px;
@@ -143,7 +143,18 @@ img{
     border-radius: 70%;
     color: white;
     font-style: bold;
-    margin-right: -230px;
     justify-content: center;
     align-items: center;
 }
+
+.history-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ul {
+    list-style-type: square;
+    list-style-position: outside;
+    list-style-image: none;
+  }
