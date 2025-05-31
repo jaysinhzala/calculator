@@ -15,9 +15,10 @@ const doubleZeroBtn = document.querySelector('.js-00-button');
 const historyBtn = document.querySelector('.js-history-button');
 const historyContainer = document.querySelector('.js-history-container');
 const historyList = document.querySelector('.js-history-list');
+const calculatorContent = document.querySelector('.js-calculator-view');
 
+let showHistory = false;
 let history = [];  // Stores calculation strings
-
 
 //---------------------------------------------
 //  Created calculator variables 
@@ -124,7 +125,6 @@ function updateHistory() {
     });
 }
 
-
 //---------------------------------------------
 //  This function is used to display every digit to input field 
 //---------------------------------------------
@@ -173,10 +173,11 @@ deleteBtn.addEventListener('click', deleteLast);
 pointBtn.addEventListener('click', appendPoint);
 percentageBtn.addEventListener('click', computePercent);
 historyBtn.addEventListener('click', () => {
-    historyContainer.style.display = 
-        historyContainer.style.display === 'none' ? 'block' : 'none';
-});
-
+    showHistory = !showHistory;
+  
+    calculatorContent.style.display = showHistory ? 'none' : 'flex';
+    historyContainer.style.display = showHistory ? 'flex' : 'none';
+  });
 
 updateDisplay();
 window.appendNumber = appendNumber;

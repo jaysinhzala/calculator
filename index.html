@@ -12,54 +12,61 @@
 
 <body>
     <div class="elements-container">
-        <input class="input js-input" placeholder="0" type="text" readonly>
-        <div>
-        <button class="history-button js-history-button"><img src="/1666652-200.png"></button>
-        </div>
-        <div class="history-container js-history-container" style="display:none;">
-            <h3>History</h3>
-            <ul class="js-history-list"></ul>
-          </div>
-            <div>
-                <button class="clear-button js-clear-button">C</button>
-                <button class="delete-button js-delete-button material-icons">
-                    &#xe14a;
-                </button>
-                <button class="percentage-button js-percentage-button">%</button>
-                <button class="division-button js-division-button">
-                    &#247;
-                </button>
-            </div>
-            <div>
-                <button class="js-7-button" onclick=appendNumber(7)>7</button>
-                <button class="js-8-button" onclick=appendNumber(8)>8</button>
-                <button class="js-9-button" onclick=appendNumber(9)>9</button>
-                <button class="multiplication-button js-multiplication-button">
-                   &#215;
-                </button>
-            </div>
-            <div>
-                <button class="js-4-button" onclick=appendNumber(4)>4</button>
-                <button class="js-5-button"onclick=appendNumber(5)>5</button>
-                <button class="js-6-button" onclick=appendNumber(6)>6</button>
-                <button class="subtraction-button js-subtraction-button">
-                    &#8722;
-                </button>
-            </div>
-            <div>
-                <button class="js-1-button" onclick=appendNumber(1)>1</button>
-                <button class="js-2-button" onclick=appendNumber(2)>2</button>
-                <button class="js-3-button" onclick=appendNumber(3)>3</button>
-                <button class="plus-button js-plus-button">+</button>
-            </div>
-            <div>
-                <button class="js-00-button">00</button>
-                <button class="js-0-button" onclick=appendNumber(0)>0</button>
-                <button class="js-point-button">.</button>
-                <button class="equal-button js-equal-button">=</button>
-            </div>
-        </div>
+
+    <!-- History Button -->
+    <div >
+      <button class="history-button js-history-button">
+        <img src="/1666652-200.png" alt="History" />
+      </button>
     </div>
+
+    <!-- Calculator View -->
+    <div class="calculator-view js-calculator-view">
+      <input class="input js-input" placeholder="0" type="text" readonly />
+
+      <div class="button-row">
+        <button class="clear-button js-clear-button">C</button>
+        <button class="delete-button js-delete-button material-icons">&#xe14a;</button>
+        <button class="percentage-button js-percentage-button">%</button>
+        <button class="division-button js-division-button">&#247;</button>
+      </div>
+
+      <div class="button-row">
+        <button onclick="appendNumber(7)">7</button>
+        <button onclick="appendNumber(8)">8</button>
+        <button onclick="appendNumber(9)">9</button>
+        <button class="multiplication-button js-multiplication-button">&#215;</button>
+      </div>
+
+      <div class="button-row">
+        <button onclick="appendNumber(4)">4</button>
+        <button onclick="appendNumber(5)">5</button>
+        <button onclick="appendNumber(6)">6</button>
+        <button class="subtraction-button js-subtraction-button">&#8722;</button>
+      </div>
+
+      <div class="button-row">
+        <button onclick="appendNumber(1)">1</button>
+        <button onclick="appendNumber(2)">2</button>
+        <button onclick="appendNumber(3)">3</button>
+        <button class="plus-button js-plus-button">+</button>
+      </div>
+
+      <div class="button-row">
+        <button class="js-00-button">00</button>
+        <button onclick="appendNumber(0)">0</button>
+        <button class="js-point-button">.</button>
+        <button class="equal-button js-equal-button">=</button>
+      </div>
+    </div>
+
+    <!-- History View -->
+    <div class="history-container js-history-container" style="display: none;">
+      <h3 style="color:white;">History</h3>
+      <ul class="js-history-list" style="color:white; list-style: none; padding: 0;"></ul>
+    </div>
+
+  </div>
     <script src="script.js"></script>
 </body>
 

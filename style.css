@@ -16,11 +16,26 @@ body{
 
 .elements-container{
     width: 400px;
-    height: 720px;
+    height: auto;
     border-width: 3px;
     border-style: solid;
     border-radius: 15px;
     border-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+    margin-bottom: 10px;
+  }
+
+.calculator-view{
     display: flex;
     flex-direction: column;
     justify-content: left;
