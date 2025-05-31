@@ -14,6 +14,7 @@ A simple, fully functional **web-based calculator** built using HTML, CSS, and v
 - **Clear Function**: Clears all input and resets the calculator.
 - **Double Zero Button (`00`)**: Quickly append two zeroes.
 - **Error Handling**: Handles divide-by-zero and invalid input cases with safe fallback (`"Error"`).
+- **History Section**: When click history button, shows all past calculations.
 
 ---
 
@@ -40,7 +41,6 @@ A simple, fully functional **web-based calculator** built using HTML, CSS, and v
 
 - Add keyboard support for number and operation keys.
 - Add a dark mode toggle.
-- Show a calculation history panel.
 - Add scientific functions (square root, exponentiation, etc.).
 - Make the layout mobile responsive.
 
